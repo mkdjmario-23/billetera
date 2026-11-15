@@ -1,0 +1,36 @@
+MI BILLETERA - GUIA RAPIDA (GitHub Pages + Google)
+
+PARTE 1: PUBLICAR EN GITHUB PAGES
+1. Entra a github.com, crea una cuenta si no tienes y toca "New repository".
+2. Nombre: billetera (o el que quieras). Marca "Public". Crea el repositorio.
+3. Toca "uploading an existing file" y sube TODO el contenido de esta carpeta
+   (index.html, sw.js, manifest.webmanifest y los 4 iconos png). Toca "Commit changes".
+4. Ve a Settings > Pages. En "Branch" elige main y la carpeta / (root). Guarda.
+5. Espera 1-2 minutos. Tu direccion sera: https://TUUSUARIO.github.io/billetera/
+
+PARTE 2: ACTIVAR EL INICIO DE SESION CON GOOGLE
+1. Entra a console.cloud.google.com e inicia sesion con tu cuenta de Google.
+2. Crea un proyecto nuevo (nombre: Mi Billetera).
+3. Menu > APIs y servicios > Biblioteca. Busca "Google Drive API" y toca Habilitar.
+4. Menu > APIs y servicios > Pantalla de consentimiento OAuth (o "Google Auth Platform").
+   - Tipo de usuario: Externo.
+   - Nombre de la app: Mi Billetera. Pon tu correo como contacto.
+   - Permisos (Scopes): agrega  .../auth/drive.appdata  (es el permiso de carpeta privada de la app).
+   - IMPORTANTE: al terminar toca "Publicar app" (pasar a Produccion). Si la dejas en
+     "Prueba", Google te pedira volver a iniciar sesion cada 7 dias.
+5. Credenciales > Crear credenciales > ID de cliente de OAuth > Aplicacion web.
+   - En "Origenes de JavaScript autorizados" agrega SOLO esto (sin ruta ni barra final):
+     https://TUUSUARIO.github.io
+   - Crea. Copia el "ID de cliente" (termina en .apps.googleusercontent.com).
+6. En GitHub abre index.html, toca el lapiz (editar), busca  PEGA_AQUI_TU_CLIENT_ID
+   y reemplaza TODO el texto  PEGA_AQUI_TU_CLIENT_ID.apps.googleusercontent.com
+   por tu ID de cliente. Commit changes.
+7. Abre tu app, ve a Ajustes > Sincronizar con Google > Iniciar sesion.
+
+EN OTRO DISPOSITIVO: abre la misma direccion, instala la app (Compartir > Agregar a
+pantalla de inicio) y toca Iniciar sesion con Google. Tus datos se descargan solos.
+
+NOTAS
+- Los datos se guardan en una carpeta oculta de TU Drive que solo esta app puede leer.
+- Si dos dispositivos cambian datos a la vez, gana el cambio mas reciente.
+- Si la pantalla de Google dice "app no verificada", toca Avanzado > Continuar.
